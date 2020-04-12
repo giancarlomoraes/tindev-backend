@@ -17,5 +17,11 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@cluster-cabya.mongodb.net/we
 server.use(cors());
 server.use(express.json());
 server.use(routes);
+server.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 
 server.listen(process.env.PORT || 3333);
